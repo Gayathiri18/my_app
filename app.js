@@ -8,8 +8,8 @@ function showView(viewId) {
   document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
   const target = document.getElementById(viewId);
   if (target) target.style.display = 'block';
-  
-  if (viewId === 'todo-view') renderTasks();
+    if (viewId === 'todo-view') renderTasks();
+  if (viewId === 'events-view') renderEvents(); // ADD THIS LINE
 }
 
 // Collapsible Logic
