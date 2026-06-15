@@ -1,18 +1,40 @@
-// Load tasks from storage when page opens
+// Initialization
 window.onload = function () {
-  loadTasks();
   registerSW();
-  showView('home-view'); // Initialize at home
+  showView('home-view'); // Default to dashboard
 };
 
-// Navigation logic
+// Navigation logic (Updated to force render when switching to To-Do)
 function showView(viewId) {
   document.querySelectorAll('.view').forEach(view => {
     view.style.display = 'none';
   });
-  document.getElementById(viewId).style.display = 'block';
+  
+  const targetView = document.getElementById(viewId);
+  if (targetView) {
+    targetView.style.display = 'block';
+  }
+
+  // Force update the list when opening the To-Do view
+  if (viewId === 'todo-view') {
+    renderTasks();
+  }
 }
 
+// Collapsible Section logic
+function toggleSection(element) {
+  const content = element.nextElementSibling;
+  // If content is hidden, show it, otherwise hide it
+  if (content.style.display === "none" || content.style.display === "") {
+    content.style.display = "block";
+    element.innerHTML = element.innerHTML.replace("▼", "▲");
+  } else {
+    content.style.display = "none";
+    element.innerHTML = element.innerHTML.replace("▲", "▼");
+  }
+}
+
+// To-Do Logic
 function addTask() {
   const input = document.getElementById('taskInput');
   const text = input.value.trim();
@@ -42,6 +64,8 @@ function deleteTask(index) {
 
 function renderTasks() {
   const list = document.getElementById('taskList');
+  if (!list) return; // Safety check
+  
   const tasks = getTasks();
   list.innerHTML = '';
 
@@ -55,10 +79,6 @@ function renderTasks() {
     `;
     list.appendChild(li);
   });
-}
-
-function loadTasks() {
-  renderTasks();
 }
 
 function getTasks() {
@@ -75,6 +95,7 @@ function registerSW() {
   }
 }
 
+// Enter Key support
 document.addEventListener('DOMContentLoaded', function () {
   const input = document.getElementById('taskInput');
   if (input) {
