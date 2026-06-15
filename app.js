@@ -1,49 +1,40 @@
 // Initialization
 window.onload = function () {
   registerSW();
-  showView('home-view'); // Default to dashboard
+  showView('home-view');
 };
 
-// Navigation logic (Updated to force render when switching to To-Do)
 function showView(viewId) {
-  document.querySelectorAll('.view').forEach(view => {
-    view.style.display = 'none';
-  });
-  
-  const targetView = document.getElementById(viewId);
-  if (targetView) {
-    targetView.style.display = 'block';
-  }
-
-  // Force update the list when opening the To-Do view
-  if (viewId === 'todo-view') {
-    renderTasks();
-  }
+  document.querySelectorAll('.view').forEach(v => v.style.display = 'none');
+  const target = document.getElementById(viewId);
+  if (target) target.style.display = 'block';
+  if (viewId === 'todo-view') renderTasks();
 }
 
-// Collapsible Section logic
 function toggleSection(element) {
   const content = element.nextElementSibling;
-  // If content is hidden, show it, otherwise hide it
-  if (content.style.display === "none" || content.style.display === "") {
+  const isHidden = content.style.display === "none" || content.style.display === "";
+
+  // 1. Close ALL sections first
+  document.querySelectorAll('.content').forEach(c => c.style.display = "none");
+  document.querySelectorAll('.collapsible').forEach(h => {
+    h.innerHTML = h.innerHTML.replace("▲", "▼");
+  });
+
+  // 2. Open clicked section if it was hidden
+  if (isHidden) {
     content.style.display = "block";
     element.innerHTML = element.innerHTML.replace("▼", "▲");
-  } else {
-    content.style.display = "none";
-    element.innerHTML = element.innerHTML.replace("▲", "▼");
   }
 }
 
-// To-Do Logic
 function addTask() {
   const input = document.getElementById('taskInput');
   const text = input.value.trim();
   if (text === '') return;
-
   const tasks = getTasks();
   tasks.push({ text: text, done: false });
   saveTasks(tasks);
-
   input.value = '';
   renderTasks();
 }
@@ -64,15 +55,12 @@ function deleteTask(index) {
 
 function renderTasks() {
   const list = document.getElementById('taskList');
-  if (!list) return; // Safety check
-  
+  if (!list) return;
   const tasks = getTasks();
   list.innerHTML = '';
-
   tasks.forEach(function (task, index) {
     const li = document.createElement('li');
     if (task.done) li.classList.add('done');
-
     li.innerHTML = `
       <span onclick="toggleTask(${index})">${task.text}</span>
       <button class="delete-btn" onclick="deleteTask(${index})">Delete</button>
@@ -81,26 +69,14 @@ function renderTasks() {
   });
 }
 
-function getTasks() {
-  return JSON.parse(localStorage.getItem('tasks') || '[]');
-}
-
-function saveTasks(tasks) {
-  localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+function getTasks() { return JSON.parse(localStorage.getItem('tasks') || '[]'); }
+function saveTasks(tasks) { localStorage.setItem('tasks', JSON.stringify(tasks)); }
 
 function registerSW() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('sw.js');
-  }
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
 }
 
-// Enter Key support
 document.addEventListener('DOMContentLoaded', function () {
   const input = document.getElementById('taskInput');
-  if (input) {
-    input.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') addTask();
-    });
-  }
+  if (input) input.addEventListener('keypress', function (e) { if (e.key === 'Enter') addTask(); });
 });
