@@ -1,6 +1,6 @@
 {
-  "name": "My To-Do App",
-  "short_name": "To-Do",
+  "name": "Innerly",
+  "short_name": "Innerly",
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#f3f0ff",
