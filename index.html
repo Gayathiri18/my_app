@@ -9,16 +9,29 @@
 </head>
 <body>
 
-  <div class="header">
-    <h1>Innerly</h1>
+  <!-- Home Dashboard -->
+  <div id="home-view" class="view">
+    <div class="header">
+      <h1>Innerly</h1>
+    </div>
+    <div class="dashboard-grid">
+      <div class="card" onclick="showView('todo-view')">✅ To-Do List</div>
+      <div class="card" onclick="alert('Feature 2 coming soon')">📅 My Schedule</div>
+    </div>
   </div>
 
-  <div class="input-area">
-    <input type="text" id="taskInput" placeholder="Add a new task..." />
-    <button onclick="addTask()">Add</button>
+  <!-- To-Do Feature View -->
+  <div id="todo-view" class="view" style="display:none;">
+    <div class="header">
+      <button onclick="showView('home-view')">Back</button>
+      <h1>To-Do List</h1>
+    </div>
+    <div class="input-area">
+      <input type="text" id="taskInput" placeholder="Add a new task..." />
+      <button onclick="addTask()">Add</button>
+    </div>
+    <ul id="taskList"></ul>
   </div>
-
-  <ul id="taskList"></ul>
 
   <script src="app.js"></script>
 </body>

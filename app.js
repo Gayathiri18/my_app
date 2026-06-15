@@ -2,7 +2,16 @@
 window.onload = function () {
   loadTasks();
   registerSW();
+  showView('home-view'); // Initialize at home
 };
+
+// Navigation logic
+function showView(viewId) {
+  document.querySelectorAll('.view').forEach(view => {
+    view.style.display = 'none';
+  });
+  document.getElementById(viewId).style.display = 'block';
+}
 
 function addTask() {
   const input = document.getElementById('taskInput');
@@ -66,9 +75,11 @@ function registerSW() {
   }
 }
 
-// Allow pressing Enter to add task
 document.addEventListener('DOMContentLoaded', function () {
-  document.getElementById('taskInput').addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') addTask();
-  });
+  const input = document.getElementById('taskInput');
+  if (input) {
+    input.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') addTask();
+    });
+  }
 });
