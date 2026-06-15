@@ -1,74 +1,38 @@
-/* Container for the To-Do list to provide breathing room */
-#todo-view {
-  background-color: #f8f9fe;
-  min-height: 100vh;
-  padding: 0 0 20px 0;
-}
+/* --- Base Styles --- */
+body { font-family: 'Segoe UI', sans-serif; background: #f3f0ff; margin: 0; }
 
-/* Modern Header for individual views */
-.header {
-  background: linear-gradient(135deg, #534AB7, #7B73D9);
-  color: white;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  box-shadow: 0 4px 10px rgba(83, 74, 183, 0.2);
-}
+.header { background: #534AB7; color: white; padding: 20px; text-align: center; }
 
-.header button {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-}
+/* --- Dashboard / Accordion Styles --- */
+.category-section { padding: 10px 16px; }
 
-/* Improved Input Area */
-.input-area {
-  padding: 20px;
-  background: white;
-  border-bottom: 1px solid #eee;
-}
-
-/* Updated List Styling */
-#taskList {
-  list-style: none;
-  padding: 20px;
-}
-
-#taskList li {
-  background: white;
-  margin-bottom: 12px;
-  padding: 16px;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #f0f0f0;
-  transition: transform 0.2s;
-}
-
-#taskList li span {
-  font-size: 16px;
+.collapsible {
+  background: white; 
+  padding: 18px; 
+  border-radius: 12px; 
+  margin-top: 10px; 
+  cursor: pointer; 
+  font-size: 16px; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  font-weight: 600;
   color: #333;
 }
 
-/* Subtle styling for completed tasks */
-#taskList li.done span {
-  text-decoration: line-through;
-  color: #a0a0a0;
+.content { padding: 5px 0; }
+
+.card {
+  background: white; 
+  padding: 15px; 
+  margin: 8px 0;
+  border-radius: 12px; 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: background 0.2s;
 }
 
-/* A more professional delete button */
-.delete-btn {
-  background: #fff5f5;
-  color: #e24b4a;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-}
+.card:hover { background: #f9f9f9; }
+
+/* --- To-Do View Specifics --- */
+.view { width: 100%; }
+.input-area { display: flex; gap: 10px; padding: 16px; }
+#taskList { list-style: none; padding: 0 16px; }
