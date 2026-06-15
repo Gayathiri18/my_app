@@ -16,9 +16,8 @@
       <h3 class="collapsible" onclick="toggleSection(this)">📆 Time & Planning ▼</h3>
       <div class="content" style="display: none;">
         <div class="card" onclick="showView('todo-view')">✅ To-Do List</div>
-        <div class="card" onclick="showView('schedule-view')">📅 My Schedule</div>
-        <div class="card">📚 Study Planner (UGC NET)</div>
         <div class="card">🗓️ Important Events</div>
+        <div class="card">📚 Study Planner (UGC NET)</div>
         <div class="card">🌿 Habit Tracker</div>
       </div>
     </div>
@@ -94,19 +93,20 @@
     <ul id="taskList"></ul>
   </div>
 
-  <div id="schedule-view" class="view" style="display:none;">
+  <div id="events-view" class="view" style="display:none;">
     <div class="header">
       <button onclick="showView('home-view')">Back</button>
-      <h1>Today's Agenda</h1>
+      <h1>Upcoming Events</h1>
     </div>
     <div class="input-area">
-      <input type="time" id="timeInput" />
-      <input type="text" id="taskInputSchedule" placeholder="Activity..." />
-      <button onclick="addSchedule()">Add</button>
+      <input type="text" id="eventName" placeholder="Event name..." />
+      <input type="date" id="eventDate" />
+      <textarea id="eventDetails" placeholder="Add notes or details..."></textarea>
+      <button onclick="addEvent()">Add Event</button>
     </div>
-    <ul id="scheduleList" class="timeline"></ul>
-  </div>
+    <ul id="eventList" class="event-list"></ul>
+</div>
 
-  <script src="app.js"></script>
+   <script src="app.js"></script>
 </body>
 </html>

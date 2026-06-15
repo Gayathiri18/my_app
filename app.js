@@ -10,7 +10,6 @@ function showView(viewId) {
   if (target) target.style.display = 'block';
   
   if (viewId === 'todo-view') renderTasks();
-  if (viewId === 'schedule-view') renderSchedule();
 }
 
 // Collapsible Logic
@@ -63,40 +62,40 @@ function deleteTask(index) {
 function getTasks() { return JSON.parse(localStorage.getItem('tasks') || '[]'); }
 function saveTasks(tasks) { localStorage.setItem('tasks', JSON.stringify(tasks)); }
 
-// Schedule Logic
-function addSchedule() {
-  const timeInput = document.getElementById('timeInput');
-  const taskInput = document.getElementById('taskInputSchedule');
-  if (!timeInput.value || !taskInput.value.trim()) return;
+function addEvent() {
+  const name = document.getElementById('eventName').value.trim();
+  const date = document.getElementById('eventDate').value;
+  if (!name || !date) return;
 
-  const schedule = JSON.parse(localStorage.getItem('schedule') || '[]');
-  schedule.push({ time: timeInput.value, task: taskInput.value.trim() });
-  schedule.sort((a, b) => a.time.localeCompare(b.time));
-  localStorage.setItem('schedule', JSON.stringify(schedule));
+  const events = JSON.parse(localStorage.getItem('events') || '[]');
+  events.push({ name, date });
+  // Keep list sorted by date
+  events.sort((a, b) => new Date(a.date) - new Date(b.date));
+  localStorage.setItem('events', JSON.stringify(events));
   
-  timeInput.value = '';
-  taskInput.value = '';
-  renderSchedule();
+  document.getElementById('eventName').value = '';
+  renderEvents();
 }
 
-function renderSchedule() {
-  const list = document.getElementById('scheduleList');
-  if (!list) return;
-  const schedule = JSON.parse(localStorage.getItem('schedule') || '[]');
-  list.innerHTML = schedule.map((item, index) => `
-    <li class="timeline-item">
-      <span class="time-tag">${item.time}</span>
-      <span class="task-text">${item.task}</span>
-      <button onclick="deleteScheduleItem(${index})">×</button>
+function renderEvents() {
+  const list = document.getElementById('eventList');
+  const events = JSON.parse(localStorage.getItem('events') || '[]');
+  list.innerHTML = events.map((e, index) => `
+    <li class="event-card">
+      <div class="event-info">
+        <strong>${e.name}</strong>
+        <span class="date-badge">${e.date}</span>
+      </div>
+      <button onclick="deleteEvent(${index})">Done</button>
     </li>
   `).join('');
 }
 
-function deleteScheduleItem(index) {
-  const schedule = JSON.parse(localStorage.getItem('schedule') || '[]');
-  schedule.splice(index, 1);
-  localStorage.setItem('schedule', JSON.stringify(schedule));
-  renderSchedule();
+function deleteEvent(index) {
+  const events = JSON.parse(localStorage.getItem('events') || '[]');
+  events.splice(index, 1);
+  localStorage.setItem('events', JSON.stringify(events));
+  renderEvents();
 }
 
 // System
