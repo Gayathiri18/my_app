@@ -12,19 +12,17 @@
   <div id="home-view" class="view">
     <div class="header"><h1>Innerly</h1></div>
 
-    <!-- Time & Planning -->
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">📆 Time & Planning ▼</h3>
       <div class="content" style="display: none;">
         <div class="card" onclick="showView('todo-view')">✅ To-Do List</div>
-        <div class="card">📅 My Schedule</div>
+        <div class="card" onclick="showView('schedule-view')">📅 My Schedule</div>
         <div class="card">📚 Study Planner (UGC NET)</div>
         <div class="card">🗓️ Important Events</div>
         <div class="card">🌿 Habit Tracker</div>
       </div>
     </div>
 
-    <!-- Goals & Aspirations -->
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🎯 Goals & Aspirations ▼</h3>
       <div class="content" style="display: none;">
@@ -33,7 +31,6 @@
       </div>
     </div>
 
-    <!-- PhD Space -->
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🔬 My PhD Space ▼</h3>
       <div class="content" style="display: none;">
@@ -49,7 +46,6 @@
       </div>
     </div>
 
-    <!-- Entertainment -->
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🎬 Entertainment & Interests ▼</h3>
       <div class="content" style="display: none;">
@@ -60,7 +56,6 @@
       </div>
     </div>
 
-    <!-- Personal & Health -->
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">💛 Personal & Health ▼</h3>
       <div class="content" style="display: none;">
@@ -70,7 +65,6 @@
       </div>
     </div>
 
-    <!-- Safe Space -->
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🔐 My Safe Space ▼</h3>
       <div class="content" style="display: none;">
@@ -80,7 +74,6 @@
       </div>
     </div>
 
-    <!-- Core -->
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🏠 Core ▼</h3>
       <div class="content" style="display: none;">
@@ -89,7 +82,6 @@
     </div>
   </div>
 
-  <!-- To-Do View -->
   <div id="todo-view" class="view" style="display:none;">
     <div class="header">
       <button onclick="showView('home-view')">Back</button>
@@ -101,7 +93,7 @@
     </div>
     <ul id="taskList"></ul>
   </div>
-  <!-- My schedule View -->
+
   <div id="schedule-view" class="view" style="display:none;">
     <div class="header">
       <button onclick="showView('home-view')">Back</button>
@@ -113,7 +105,7 @@
       <button onclick="addSchedule()">Add</button>
     </div>
     <ul id="scheduleList" class="timeline"></ul>
-</div>
+  </div>
 
   <script src="app.js"></script>
 </body>

@@ -1,21 +1,41 @@
+/* --- Base Styles --- */
 body { font-family: 'Segoe UI', sans-serif; background: #f3f0ff; margin: 0; font-size: 18px; }
+
 .header { background: #534AB7; color: white; padding: 25px; text-align: center; }
 .header h1 { font-size: 28px; margin: 0; }
+
 .category-section { padding: 15px 20px; }
-.collapsible { background: white; padding: 22px; border-radius: 16px; margin-top: 15px; cursor: pointer; font-size: 20px; font-weight: 700; color: #333; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-.card { background: white; padding: 20px; margin: 12px 0; border-radius: 16px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-size: 18px; cursor: pointer; }
+
+/* --- Dashboard Elements --- */
+.collapsible {
+  background: white; padding: 22px; border-radius: 16px; margin-top: 15px; 
+  cursor: pointer; font-size: 20px; font-weight: 700; color: #333;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.card {
+  background: white; padding: 20px; margin: 12px 0; border-radius: 16px; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-size: 18px; cursor: pointer;
+}
+
 .view { width: 100%; }
 .input-area { display: flex; gap: 10px; padding: 20px; }
-#taskList { list-style: none; padding: 0 20px; }
-#taskList li { background: white; padding: 20px; margin-bottom: 15px; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; }
-.delete-btn { background: #ffecec; color: #e24b4a; border: none; padding: 10px 20px; border-radius: 12px; font-size: 16px; font-weight: 600; }
 
+/* --- To-Do List --- */
+#taskList { list-style: none; padding: 0 20px; }
+#taskList li { 
+  background: white; padding: 24px; margin-bottom: 16px; border-radius: 16px; 
+  display: flex; justify-content: space-between; align-items: center; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.delete-btn { background: #ffecec; color: #e24b4a; border: none; padding: 12px 20px; border-radius: 12px; font-size: 16px; font-weight: 600; }
+
+/* --- Schedule Timeline --- */
 .timeline { list-style: none; padding: 20px; }
 .timeline-item { 
   background: white; padding: 20px; margin-bottom: 15px; 
   border-radius: 12px; display: flex; align-items: center; 
-  border-left: 5px solid #534AB7; /* The timeline line */
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border-left: 5px solid #534AB7; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
-.time-tag { font-weight: bold; color: #534AB7; margin-right: 15px; min-width: 70px; }
+.time-tag { font-weight: bold; color: #534AB7; margin-right: 15px; min-width: 70px; font-size: 18px; }
 .task-text { font-size: 18px; flex: 1; }
