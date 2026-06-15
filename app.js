@@ -65,28 +65,34 @@ function saveTasks(tasks) { localStorage.setItem('tasks', JSON.stringify(tasks))
 function addEvent() {
   const name = document.getElementById('eventName').value.trim();
   const date = document.getElementById('eventDate').value;
+  const details = document.getElementById('eventDetails').value.trim(); // Capture details
+  
   if (!name || !date) return;
 
   const events = JSON.parse(localStorage.getItem('events') || '[]');
-  events.push({ name, date });
-  // Keep list sorted by date
+  events.push({ name, date, details }); // Save details
   events.sort((a, b) => new Date(a.date) - new Date(b.date));
   localStorage.setItem('events', JSON.stringify(events));
   
   document.getElementById('eventName').value = '';
+  document.getElementById('eventDate').value = '';
+  document.getElementById('eventDetails').value = ''; // Clear details
   renderEvents();
 }
 
 function renderEvents() {
   const list = document.getElementById('eventList');
+  if (!list) return;
   const events = JSON.parse(localStorage.getItem('events') || '[]');
+  
   list.innerHTML = events.map((e, index) => `
     <li class="event-card">
       <div class="event-info">
-        <strong>${e.name}</strong>
+        <strong>${e.name}</strong> 
         <span class="date-badge">${e.date}</span>
+        <p style="margin: 5px 0 0 0; font-size: 15px; color: #555;">${e.details || ''}</p>
       </div>
-      <button onclick="deleteEvent(${index})">Done</button>
+      <button class="delete-btn" onclick="deleteEvent(${index})">Done</button>
     </li>
   `).join('');
 }

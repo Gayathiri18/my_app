@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v16'; // Increment this if you change file names
+const CACHE_VERSION = 'v17'; // Increment this if you change file names
 const CACHE_NAME = 'innerly-cache-' + CACHE_VERSION;
 
 const FILES_TO_CACHE = [
