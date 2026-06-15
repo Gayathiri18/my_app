@@ -101,6 +101,19 @@
     </div>
     <ul id="taskList"></ul>
   </div>
+  <!-- My schedule View -->
+  <div id="schedule-view" class="view" style="display:none;">
+    <div class="header">
+      <button onclick="showView('home-view')">Back</button>
+      <h1>Today's Agenda</h1>
+    </div>
+    <div class="input-area">
+      <input type="time" id="timeInput" />
+      <input type="text" id="taskInputSchedule" placeholder="Activity..." />
+      <button onclick="addSchedule()">Add</button>
+    </div>
+    <ul id="scheduleList" class="timeline"></ul>
+</div>
 
   <script src="app.js"></script>
 </body>

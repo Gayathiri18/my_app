@@ -1,5 +1,5 @@
 // Change this version number whenever you update your CSS or HTML
-const CACHE_VERSION = 'v5'; 
+const CACHE_VERSION = 'v6'; 
 const CACHE_NAME = 'innerly-cache-' + CACHE_VERSION;
 const FILES_TO_CACHE = [
   '/',
