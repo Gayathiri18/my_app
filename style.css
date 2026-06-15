@@ -1,17 +1,117 @@
-body { font-family: 'Segoe UI', sans-serif; background: #f3f0ff; font-size: 20px; } /* Increased base */
-.header { background: #534AB7; color: white; padding: 30px; text-align: center; }
-.header h1 { font-size: 32px; }
-
-/* Main Category Tabs */
-.collapsible {
-  background: #6a5acd; /* New Tab Color */
-  color: white;
-  padding: 25px; border-radius: 16px; margin-top: 20px; 
-  cursor: pointer; font-size: 22px; font-weight: 600;
+/* --- Base Styles --- */
+body { 
+  font-family: 'Segoe UI', sans-serif; 
+  background: #f3f0ff; 
+  font-size: 20px; /* Increased base font size */
+  margin: 0; 
 }
 
-.card { background: white; padding: 22px; margin: 15px 0; border-radius: 16px; font-size: 20px; cursor: pointer; }
+.header { 
+  background: #534AB7; 
+  color: white; 
+  padding: 30px; 
+  text-align: center; 
+}
 
-/* Events */
-.event-card { background: white; padding: 20px; margin-bottom: 15px; border-radius: 12px; display: flex; justify-content: space-between; align-items: center; font-size: 18px; }
-.delete-btn { background: #ffecec; color: #e24b4a; border: none; padding: 12px 20px; border-radius: 12px; font-size: 16px; }
+.header h1 { 
+  font-size: 32px; 
+  margin: 0; 
+}
+
+/* --- Category Sections --- */
+.category-section { 
+  padding: 15px 20px; 
+}
+
+.collapsible {
+  background: #6a5acd; /* Distinct purple tab color */
+  color: white;
+  padding: 25px; 
+  border-radius: 16px; 
+  margin-top: 20px; 
+  cursor: pointer; 
+  font-size: 24px; /* Larger font for headings */
+  font-weight: 600;
+}
+
+.card { 
+  background: white; 
+  padding: 22px; 
+  margin: 15px 0; 
+  border-radius: 16px; 
+  font-size: 20px; 
+  cursor: pointer; 
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.view { 
+  width: 100%; 
+}
+
+.input-area { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 10px; 
+  padding: 20px; 
+}
+
+/* --- To-Do List --- */
+#taskList { 
+  list-style: none; 
+  padding: 0 20px; 
+}
+
+#taskList li { 
+  background: white; 
+  padding: 24px; 
+  margin-bottom: 16px; 
+  border-radius: 16px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+/* --- Important Events / Archive --- */
+.event-list { 
+  list-style: none; 
+  padding: 20px; 
+}
+
+.event-card { 
+  background: white; 
+  padding: 25px; 
+  margin-bottom: 20px; 
+  border-radius: 16px; 
+  display: flex; 
+  justify-content: space-between;
+  align-items: center; 
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+  font-size: 18px; 
+}
+
+.date-badge { 
+  background: #ede7f6; 
+  color: #534AB7; 
+  padding: 6px 12px; 
+  border-radius: 8px; 
+  font-size: 16px; 
+  margin-left: 10px; 
+  font-weight: bold;
+}
+
+/* --- Buttons --- */
+.delete-btn { 
+  background: #ffeded; 
+  color: #d32f2f; 
+  border: 2px solid #ffeded; 
+  padding: 15px 25px; 
+  border-radius: 12px; 
+  font-size: 18px; 
+  font-weight: bold; 
+  cursor: pointer;
+}
+
+.delete-btn:active { 
+  background: #ffe0e0; 
+}
