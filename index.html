@@ -11,26 +11,47 @@
 
   <!-- Home Dashboard -->
   <div id="home-view" class="view">
-    <div class="header">
-      <h1>Innerly</h1>
-    </div>
-    <div class="dashboard-grid">
+    <div class="header"><h1>Innerly</h1></div>
+
+    <!-- Grouped Features -->
+    <div class="category-section">
+      <h3>📆 Time & Planning</h3>
       <div class="card" onclick="showView('todo-view')">✅ To-Do List</div>
-      <div class="card" onclick="alert('Feature 2 coming soon')">📅 My Schedule</div>
+      <div class="card">📅 My Schedule</div>
+      <div class="card">📚 Study Planner (UGC NET)</div>
+      <div class="card">🗓️ Important Events</div>
+      <div class="card">🌿 Habit Tracker</div>
     </div>
+
+    <div class="category-section">
+      <h3>🎯 Goals & Aspirations</h3>
+      <div class="card">🌍 Travel Bucket List</div>
+      <div class="card">🎓 Career Goals Board</div>
+    </div>
+
+    <div class="category-section">
+      <h3>🔬 My PhD Space</h3>
+      <div class="card">📖 Research & Paper Tracker</div>
+      <div class="card">📝 Literature Notes</div>
+      <div class="card">💡 Ideas Board</div>
+      <div class="card">🧪 Experiment / Simulation Log</div>
+      <div class="card">📊 Conference Tracker</div>
+      <div class="card">🗓️ PhD Timeline</div>
+      <div class="card">👩‍🏫 Supervisor Meeting Notes</div>
+      <div class="card">📚 Reference / Citation Bank</div>
+      <div class="card">🏆 Achievements</div>
+    </div>
+
+    <!-- Repeat structure for other sections: Entertainment, Personal, Safe Space -->
   </div>
 
-  <!-- To-Do Feature View -->
+  <!-- Feature Views -->
   <div id="todo-view" class="view" style="display:none;">
     <div class="header">
       <button onclick="showView('home-view')">Back</button>
       <h1>To-Do List</h1>
     </div>
-    <div class="input-area">
-      <input type="text" id="taskInput" placeholder="Add a new task..." />
-      <button onclick="addTask()">Add</button>
-    </div>
-    <ul id="taskList"></ul>
+    <!-- ... your existing list content ... -->
   </div>
 
   <script src="app.js"></script>

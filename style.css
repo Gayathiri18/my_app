@@ -1,19 +1,74 @@
-/* ... Keep your existing CSS here ... */
-
-/* New Dashboard Styles */
-.view { width: 100%; }
-.dashboard-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  padding: 16px;
+/* Container for the To-Do list to provide breathing room */
+#todo-view {
+  background-color: #f8f9fe;
+  min-height: 100vh;
+  padding: 0 0 20px 0;
 }
-.card {
-  background: white;
+
+/* Modern Header for individual views */
+.header {
+  background: linear-gradient(135deg, #534AB7, #7B73D9);
+  color: white;
   padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 4px 10px rgba(83, 74, 183, 0.2);
+}
+
+.header button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
+}
+
+/* Improved Input Area */
+.input-area {
+  padding: 20px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+/* Updated List Styling */
+#taskList {
+  list-style: none;
+  padding: 20px;
+}
+
+#taskList li {
+  background: white;
+  margin-bottom: 12px;
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #f0f0f0;
+  transition: transform 0.2s;
+}
+
+#taskList li span {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Subtle styling for completed tasks */
+#taskList li.done span {
+  text-decoration: line-through;
+  color: #a0a0a0;
+}
+
+/* A more professional delete button */
+.delete-btn {
+  background: #fff5f5;
+  color: #e24b4a;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
 }
