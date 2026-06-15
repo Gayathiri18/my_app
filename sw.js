@@ -1,4 +1,4 @@
-const CACHE = 'todo-v2';
+const CACHE = 'todo-v4';
 const FILES = ['/', '/index.html', '/style.css', '/app.js'];
 
 self.addEventListener('install', function (e) {
