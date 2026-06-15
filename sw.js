@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v18'; // Increment this number when you update your files!
+const CACHE_VERSION = 'v19'; // Increment this number when you update your files!
 const CACHE_NAME = 'innerly-cache-' + CACHE_VERSION;
 
 const FILES_TO_CACHE = [

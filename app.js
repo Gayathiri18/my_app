@@ -62,6 +62,7 @@ function deleteTask(index) {
 function getTasks() { return JSON.parse(localStorage.getItem('tasks') || '[]'); }
 function saveTasks(tasks) { localStorage.setItem('tasks', JSON.stringify(tasks)); }
 
+// Event Logic
 function addEvent() {
   const name = document.getElementById('eventName').value.trim();
   const date = document.getElementById('eventDate').value;
@@ -84,11 +85,13 @@ function renderEvents() {
   const list = document.getElementById('eventList');
   if (!list) return;
   const events = JSON.parse(localStorage.getItem('events') || '[]');
+  
   list.innerHTML = events.map((e, index) => `
     <li class="event-card">
       <div class="event-info">
-        <strong>${e.name}</strong> <span class="date-badge">${e.date}</span>
-        <p>${e.details || ''}</p>
+        <strong style="font-size: 22px;">${e.name}</strong> 
+        <span class="date-badge" style="font-size: 18px;">${e.date}</span>
+        <p style="margin: 10px 0 0 0; font-size: 18px; color: #444;">${e.details || ''}</p>
       </div>
       <button class="delete-btn" onclick="deleteEvent(${index})">Done</button>
     </li>
@@ -101,6 +104,14 @@ function deleteEvent(index) {
   localStorage.setItem('events', JSON.stringify(events));
   renderEvents();
 }
-
 // System
 function registerSW() { if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js'); }
+
+document.addEventListener('DOMContentLoaded', function () {
+  const taskInput = document.getElementById('taskInput');
+  if (taskInput) taskInput.addEventListener('keypress', function (e) { if (e.key === 'Enter') addTask(); });
+  
+  // Added Enter key support for events as well
+  const eventInput = document.getElementById('eventName');
+  if (eventInput) eventInput.addEventListener('keypress', function (e) { if (e.key === 'Enter') addEvent(); });
+});
