@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v17'; // Increment this if you change file names
+const CACHE_VERSION = 'v18'; // Increment this number when you update your files!
 const CACHE_NAME = 'innerly-cache-' + CACHE_VERSION;
 
 const FILES_TO_CACHE = [
@@ -26,7 +26,7 @@ self.addEventListener('install', (e) => {
   );
 });
 
-// Activate: Remove old caches
+// Activate: Remove old caches to free up space
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keys) => {

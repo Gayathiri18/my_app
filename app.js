@@ -84,13 +84,11 @@ function renderEvents() {
   const list = document.getElementById('eventList');
   if (!list) return;
   const events = JSON.parse(localStorage.getItem('events') || '[]');
-  
   list.innerHTML = events.map((e, index) => `
     <li class="event-card">
       <div class="event-info">
-        <strong>${e.name}</strong> 
-        <span class="date-badge">${e.date}</span>
-        <p style="margin: 5px 0 0 0; font-size: 15px; color: #555;">${e.details || ''}</p>
+        <strong>${e.name}</strong> <span class="date-badge">${e.date}</span>
+        <p>${e.details || ''}</p>
       </div>
       <button class="delete-btn" onclick="deleteEvent(${index})">Done</button>
     </li>
