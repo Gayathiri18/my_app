@@ -2,25 +2,24 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Innerly</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="manifest" href="manifest.json" />
 </head>
 <body>
 
-  <!-- HOME VIEW -->
+  <!-- ======================== HOME VIEW ======================== -->
   <div id="home-view" class="view">
-    <div class="header"><h1>Innerly</h1></div>
+    <div class="header"><h1>✨ Innerly</h1></div>
 
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">📆 Time & Planning ▼</h3>
       <div class="content">
         <div class="card" onclick="showView('todo-view')">✅ To-Do List</div>
         <div class="card" onclick="showView('events-view')">🗓️ Important Events</div>
-        <div class="card">📅 My Schedule</div>
-        <div class="card">📚 Study Planner (UGC NET)</div>
-        <div class="card">🌿 Habit Tracker</div>
+        <div class="card" onclick="showView('study-view')">📚 Study Planner</div>
+        <div class="card" onclick="showView('habit-view')">🌿 Habit Tracker</div>
       </div>
     </div>
 
@@ -78,7 +77,7 @@
     <div class="bottom-space"></div>
   </div>
 
-  <!-- TO-DO VIEW -->
+  <!-- ======================== TO-DO VIEW ======================== -->
   <div id="todo-view" class="view" style="display:none;">
     <div class="header">
       <button class="back-btn" onclick="showView('home-view')">← Back</button>
@@ -92,7 +91,7 @@
     <div class="bottom-space"></div>
   </div>
 
-  <!-- EVENTS VIEW -->
+  <!-- ======================== EVENTS VIEW ======================== -->
   <div id="events-view" class="view" style="display:none;">
     <div class="header">
       <button class="back-btn" onclick="showView('home-view')">← Back</button>
@@ -105,6 +104,91 @@
       <button class="add-btn" onclick="addEvent()">+ Add Event</button>
     </div>
     <ul id="eventList" class="event-list"></ul>
+    <div class="bottom-space"></div>
+  </div>
+
+  <!-- ======================== STUDY PLANNER VIEW ======================== -->
+  <div id="study-view" class="view" style="display:none;">
+    <div class="header">
+      <button class="back-btn" onclick="showView('home-view')">← Back</button>
+      <h1>Study Planner 📚</h1>
+    </div>
+    <div class="input-area">
+      <input type="text" id="examInput" placeholder="Exam name (e.g. UGC NET, GATE)..." />
+      <button class="add-btn" onclick="addExam()">+ Add Exam</button>
+    </div>
+    <div id="examList"></div>
+    <div class="bottom-space"></div>
+  </div>
+
+  <!-- ======================== EXAM DETAIL VIEW ======================== -->
+  <div id="exam-detail-view" class="view" style="display:none;">
+    <div class="header">
+      <button class="back-btn" onclick="showView('study-view')">← Back</button>
+      <h1 id="examDetailTitle">Exam</h1>
+    </div>
+
+    <!-- Tab buttons -->
+    <div class="tab-bar">
+      <button class="tab-btn active" id="tab-checklist" onclick="switchTab('checklist')">✅ Checklist</button>
+      <button class="tab-btn" id="tab-notes" onclick="switchTab('notes')">📝 Notes</button>
+    </div>
+
+    <!-- Checklist Tab -->
+    <div id="panel-checklist" class="tab-panel">
+      <div class="input-area">
+        <input type="text" id="checklistInput" placeholder="Add a topic or task..." />
+        <button class="add-btn" onclick="addChecklistItem()">+ Add</button>
+      </div>
+      <ul id="checklistItems"></ul>
+    </div>
+
+    <!-- Notes Tab -->
+    <div id="panel-notes" class="tab-panel" style="display:none;">
+      <div class="input-area">
+        <input type="text" id="noteTitle" placeholder="Note title..." />
+        <textarea id="noteContent" placeholder="Write your note here..." rows="5"></textarea>
+        <button class="add-btn" onclick="addNote()">+ Save Note</button>
+      </div>
+      <div id="notesList"></div>
+    </div>
+
+    <div class="bottom-space"></div>
+  </div>
+
+  <!-- ======================== HABIT TRACKER VIEW ======================== -->
+  <div id="habit-view" class="view" style="display:none;">
+    <div class="header">
+      <button class="back-btn" onclick="showView('home-view')">← Back</button>
+      <h1>Habit Tracker 🌿</h1>
+    </div>
+    <div class="input-area">
+      <input type="text" id="habitInput" placeholder="Add a habit (e.g. Drink water, Study)..." />
+      <button class="add-btn" onclick="addHabit()">+ Add Habit</button>
+    </div>
+
+    <!-- Habit tab bar -->
+    <div class="tab-bar">
+      <button class="tab-btn active" id="htab-today" onclick="switchHabitTab('today')">📅 Today</button>
+      <button class="tab-btn" id="htab-weekly" onclick="switchHabitTab('weekly')">📆 Weekly</button>
+      <button class="tab-btn" id="htab-monthly" onclick="switchHabitTab('monthly')">📊 Monthly</button>
+    </div>
+
+    <!-- Today Tab -->
+    <div id="hpanel-today" class="tab-panel">
+      <div id="habitTodayList"></div>
+    </div>
+
+    <!-- Weekly Tab -->
+    <div id="hpanel-weekly" class="tab-panel" style="display:none;">
+      <div id="habitWeeklyView"></div>
+    </div>
+
+    <!-- Monthly Tab -->
+    <div id="hpanel-monthly" class="tab-panel" style="display:none;">
+      <div id="habitMonthlyView"></div>
+    </div>
+
     <div class="bottom-space"></div>
   </div>
 
