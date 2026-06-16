@@ -9,14 +9,16 @@
 </head>
 <body>
 
+  <!-- HOME VIEW -->
   <div id="home-view" class="view">
     <div class="header"><h1>Innerly</h1></div>
 
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">📆 Time & Planning ▼</h3>
-      <div class="content" style="display: none;">
+      <div class="content">
         <div class="card" onclick="showView('todo-view')">✅ To-Do List</div>
         <div class="card" onclick="showView('events-view')">🗓️ Important Events</div>
+        <div class="card">📅 My Schedule</div>
         <div class="card">📚 Study Planner (UGC NET)</div>
         <div class="card">🌿 Habit Tracker</div>
       </div>
@@ -24,7 +26,7 @@
 
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🎯 Goals & Aspirations ▼</h3>
-      <div class="content" style="display: none;">
+      <div class="content">
         <div class="card">🌍 Travel Bucket List</div>
         <div class="card">🎓 Career Goals Board</div>
       </div>
@@ -32,7 +34,7 @@
 
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🔬 My PhD Space ▼</h3>
-      <div class="content" style="display: none;">
+      <div class="content">
         <div class="card">📖 Research & Paper Tracker</div>
         <div class="card">📝 Literature Notes</div>
         <div class="card">💡 Ideas Board</div>
@@ -47,7 +49,7 @@
 
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🎬 Entertainment & Interests ▼</h3>
-      <div class="content" style="display: none;">
+      <div class="content">
         <div class="card">🎬 My Movie List</div>
         <div class="card">📖 Book Reading List</div>
         <div class="card">🎵 Tamil Music / Song Journal</div>
@@ -57,7 +59,7 @@
 
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">💛 Personal & Health ▼</h3>
-      <div class="content" style="display: none;">
+      <div class="content">
         <div class="card">🌸 Period Tracker</div>
         <div class="card">💭 Daily Thoughts / Micro Diary</div>
         <div class="card">💰 Simple Expense Tracker</div>
@@ -66,47 +68,46 @@
 
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🔐 My Safe Space ▼</h3>
-      <div class="content" style="display: none;">
+      <div class="content">
         <div class="card">📸 Important Photos</div>
         <div class="card">📄 Important Documents</div>
         <div class="card">🔒 My Personal Space</div>
       </div>
     </div>
 
-    <div class="category-section">
-      <h3 class="collapsible" onclick="toggleSection(this)">🏠 Core ▼</h3>
-      <div class="content" style="display: none;">
-        <div class="card">🏠 Home Dashboard</div>
-      </div>
-    </div>
+    <div class="bottom-space"></div>
   </div>
 
+  <!-- TO-DO VIEW -->
   <div id="todo-view" class="view" style="display:none;">
     <div class="header">
-      <button onclick="showView('home-view')">Back</button>
-      <h1>To-Do List</h1>
+      <button class="back-btn" onclick="showView('home-view')">← Back</button>
+      <h1>To-Do List ✅</h1>
     </div>
     <div class="input-area">
       <input type="text" id="taskInput" placeholder="Add a new task..." />
-      <button onclick="addTask()">Add</button>
+      <button class="add-btn" onclick="addTask()">+ Add Task</button>
     </div>
     <ul id="taskList"></ul>
+    <div class="bottom-space"></div>
   </div>
 
+  <!-- EVENTS VIEW -->
   <div id="events-view" class="view" style="display:none;">
     <div class="header">
-      <button onclick="showView('home-view')">Back</button>
-      <h1>Upcoming Events</h1>
+      <button class="back-btn" onclick="showView('home-view')">← Back</button>
+      <h1>Important Events 🗓️</h1>
     </div>
     <div class="input-area">
       <input type="text" id="eventName" placeholder="Event name..." />
       <input type="date" id="eventDate" />
-      <textarea id="eventDetails" placeholder="Add notes or details..."></textarea>
-      <button onclick="addEvent()">Add Event</button>
+      <textarea id="eventDetails" placeholder="Add notes or details..." rows="3"></textarea>
+      <button class="add-btn" onclick="addEvent()">+ Add Event</button>
     </div>
     <ul id="eventList" class="event-list"></ul>
-</div>
+    <div class="bottom-space"></div>
+  </div>
 
-   <script src="app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
