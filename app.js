@@ -19,6 +19,8 @@ function showView(viewId) {
   if (viewId === 'events-view')      renderEvents();
   if (viewId === 'study-view')       renderExams();
   if (viewId === 'habit-view')       { renderHabitsToday(); renderHabitsWeekly(); renderHabitsMonthly(); }
+  if (viewId === 'travel-view') renderTravel();
+  if (viewId === 'career-view') renderCareer();
 }
 
 // =============================================
@@ -539,3 +541,62 @@ document.addEventListener('DOMContentLoaded', function () {
     if (el) el.addEventListener('keypress', e => { if (e.key === 'Enter') fn(); });
   });
 });
+
+// --- TRAVEL ---
+function addTravel() {
+  const name = document.getElementById('travelName').value.trim();
+  const notes = document.getElementById('travelNotes').value.trim();
+  if (!name) return;
+  const items = JSON.parse(localStorage.getItem('travel') || '[]');
+  items.push({ name, notes, visited: false });
+  localStorage.setItem('travel', JSON.stringify(items));
+  renderTravel();
+}
+
+function renderTravel() {
+  const list = document.getElementById('travelList');
+  const items = JSON.parse(localStorage.getItem('travel') || '[]');
+  list.innerHTML = items.map((i, idx) => `
+    <li class="event-card ${i.visited ? 'done' : ''}">
+      <div class="event-info">
+        <strong style="font-size: 20px;">${i.name}</strong>
+        <p>${i.notes}</p>
+      </div>
+      <button class="done-btn" onclick="toggleTravel(${idx})">${i.visited ? 'Undo' : 'Done'}</button>
+    </li>`).join('');
+}
+
+function toggleTravel(idx) {
+  const items = JSON.parse(localStorage.getItem('travel') || '[]');
+  items[idx].visited = !items[idx].visited;
+  localStorage.setItem('travel', JSON.stringify(items));
+  renderTravel();
+}
+
+// --- CAREER ---
+function addCareer() {
+  const title = document.getElementById('careerTitle').value;
+  const type = document.getElementById('careerType').value;
+  const deadline = document.getElementById('careerDeadline').value;
+  const status = document.getElementById('careerStatus').value;
+  const notes = document.getElementById('careerNotes').value;
+  if (!title || !deadline) return;
+  const items = JSON.parse(localStorage.getItem('career') || '[]');
+  items.push({ title, type, deadline, status, notes });
+  localStorage.setItem('career', JSON.stringify(items));
+  renderCareer();
+}
+
+function renderCareer() {
+  const list = document.getElementById('careerList');
+  const items = JSON.parse(localStorage.getItem('career') || '[]');
+  list.innerHTML = items.map((i, idx) => `
+    <li class="event-card">
+      <div class="event-info">
+        <div class="event-name">${i.title} (${i.type})</div>
+        <div class="date-badge">${i.deadline} — ${i.status}</div>
+        <p class="event-details">${i.notes}</p>
+      </div>
+      <button class="delete-btn" onclick="deleteCareer(${idx})">Delete</button>
+    </li>`).join('');
+}

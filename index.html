@@ -26,8 +26,8 @@
     <div class="category-section">
       <h3 class="collapsible" onclick="toggleSection(this)">🎯 Goals & Aspirations ▼</h3>
       <div class="content">
-        <div class="card">🌍 Travel Bucket List</div>
-        <div class="card">🎓 Career Goals Board</div>
+        <div class="card" onclick="showView('travel-view')">🌍 Travel Bucket List</div>
+        <div class="card" onclick="showView('career-view')">🎓 Career Goals Board</div>
       </div>
     </div>
 
@@ -190,6 +190,48 @@
     </div>
 
     <div class="bottom-space"></div>
+  </div>
+    <!-- ======================== TRAVEL VIEW ======================== -->
+
+<div id="travel-view" class="view" style="display:none;">
+    <div class="header">
+      <button class="back-btn" onclick="showView('home-view')">← Back</button>
+      <h1>Travel Bucket List 🌍</h1>
+    </div>
+    <div class="input-area">
+      <input type="text" id="travelName" placeholder="Place name..." />
+      <textarea id="travelNotes" placeholder="Why you want to go / what to do..." rows="2"></textarea>
+      <button class="add-btn" onclick="addTravel()">+ Add Place</button>
+    </div>
+    <ul id="travelList" class="event-list"></ul>
+  </div>
+
+  <!-- ======================== CAREER VIEW ======================== -->
+
+  <div id="career-view" class="view" style="display:none;">
+    <div class="header">
+      <button class="back-btn" onclick="showView('home-view')">← Back</button>
+      <h1>Career Opportunities 🎓</h1>
+    </div>
+    <div class="input-area">
+      <input type="text" id="careerTitle" placeholder="Title (e.g. GATE 2027)..." />
+      <select id="careerType">
+        <option value="Exam">Exam</option>
+        <option value="Interview">Interview</option>
+        <option value="Application">Application</option>
+        <option value="Scholarship">Scholarship</option>
+      </select>
+      <input type="date" id="careerDeadline" />
+      <select id="careerStatus">
+        <option value="Planned">Planned</option>
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Result">Result</option>
+      </select>
+      <textarea id="careerNotes" placeholder="Notes..." rows="2"></textarea>
+      <button class="add-btn" onclick="addCareer()">+ Add Opportunity</button>
+    </div>
+    <ul id="careerList" class="event-list"></ul>
   </div>
 
   <script src="app.js"></script>
