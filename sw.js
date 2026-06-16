@@ -1,4 +1,4 @@
-const CACHE_VERSION = 'v25';
+const CACHE_VERSION = 'v26';
 const CACHE_NAME = 'innerly-cache-' + CACHE_VERSION;
 const FILES_TO_CACHE = ['./', './index.html', './style.css', './app.js', './manifest.json'];
 
